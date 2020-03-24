@@ -878,7 +878,9 @@ class Elements extends Component
 					'5' => '5',
 					'6' => '6',
 					'7' => '7',
-					'8' => '8');
+					'8' => '8',
+				  '9' => '9',
+					'13' => '10');
 					break;
 					case "asistenciaEC": // Asistencia Entorno Comunitario Periodo tipo = 2
 					return array (

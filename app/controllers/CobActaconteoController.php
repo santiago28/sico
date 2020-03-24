@@ -76,6 +76,8 @@ class CobActaconteoController extends ControllerBase
 			$asiste6 = $acta->getCobActaconteoPersona(['tipoPersona = 0 AND asistencia = 6']);
 			$asiste7 = $acta->getCobActaconteoPersona(['tipoPersona = 0 AND asistencia = 7']);
 			$asiste8 = $acta->getCobActaconteoPersona(['tipoPersona = 0 AND asistencia = 8']);
+			$asiste9 = $acta->getCobActaconteoPersona(['tipoPersona = 0 AND asistencia = 9']);
+			$asiste10 = $acta->getCobActaconteoPersona(['tipoPersona = 0 AND asistencia = 13']);
 			$asistetotal = $acta->getCobActaconteoPersona(['tipoPersona = 0']);
 			$asisteadicionales = $acta->getCobActaconteoPersona(['tipoPersona = 1']);
 			$this->view->asiste1 = count($asiste1);
@@ -86,6 +88,8 @@ class CobActaconteoController extends ControllerBase
 			$this->view->asiste6 = count($asiste6);
 			$this->view->asiste7 = count($asiste7);
 			$this->view->asiste8 = count($asiste8);
+			$this->view->asiste9 = count($asiste9);
+			$this->view->asiste10 = count($asiste10);
 			$this->view->asistetotal = count($asistetotal);
 			$this->view->asisteadicionales = count($asisteadicionales);
 			$this->assets
@@ -255,7 +259,7 @@ class CobActaconteoController extends ControllerBase
 		}
 		else
 		{
-			$db->query("DELETE FROM cob_actaconteo_persona_excusa WHERE id_actaconteo_persona IN (SELECT a.id_actaconteo_persona FROM cob_actaconteo_persona as a, cob_actaconteo as b WHERE a.asistencia != 7 AND a.asistencia != 8 AND a.id_actaconteo = b.id_actaconteo AND b.id_modalidad != 5 )");
+			$db->query("DELETE FROM cob_actaconteo_persona_excusa WHERE id_actaconteo_persona IN (SELECT a.id_actaconteo_persona FROM cob_actaconteo_persona as a, cob_actaconteo as b WHERE a.asistencia != 7 AND a.asistencia != 8 AND a.asistencia = 9 AND a.asistencia = 13 AND a.id_actaconteo = b.id_actaconteo AND b.id_modalidad != 5 )");
 		}
 		$acta->estado = 1;
 		$acta->save();
