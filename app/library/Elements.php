@@ -139,10 +139,10 @@ class Elements extends Component
 			'caption' => 'Archivo Digital',
 			'action' => 'index'
 		),
-		'ibc_instrumentos' => array(
-			'caption' => 'Instrumentos',
-			'action' => 'index'
-		),
+		// 'ibc_instrumentos' => array(
+		// 	'caption' => 'Instrumentos',
+		// 	'action' => 'index'
+		// ),
 		'bc_reporte' => array(
 			'caption' => 'Reportes',
 			'action' => 'oferente_contratos'
@@ -399,6 +399,14 @@ class Elements extends Component
 				$menu_usuario .= '</div>';
 			}
 
+			echo '<div class="header-menu-principal">';
+			echo '<div>';
+			echo '<img id="avatarprincipal" src="" />';
+			echo '<br />';
+			echo '<b>Nombre:&ensp;</b><span id="username">'.explode(" ", $user['nombre'])[0].'</span>';
+			echo '</div>';
+			echo '</div>';
+			echo '<div class="body-menu-principal">';
 			foreach ($menu as $controller => $option) {
 				if ($controller == "bc_reporte" && $user['nivel'] <= 2) {
 					// if ($controllerName == $controller) {
@@ -424,20 +432,20 @@ class Elements extends Component
 					echo '<span>Archivo Digital</span>';
 					echo '</div>';
 
-					echo '<div class="item-menu">';
-					echo '<i class="material-icons"></i>';
-					echo '<span>'.$this->tag->linkTo("ibc_archivo_digital/index/2015", "2015").'</span>';
-					echo '</div>';
-
-					echo '<div class="item-menu">';
-					echo '<i class="material-icons"></i>';
-					echo '<span>'.$this->tag->linkTo("ibc_archivo_digital/index/2016", "2016").'</span>';
-					echo '</div>';
-
-					echo '<div class="item-menu">';
-					echo '<i class="material-icons"></i>';
-					echo '<span>'.$this->tag->linkTo("ibc_archivo_digital/index/2017", "2017").'</span>';
-					echo '</div>';
+					// echo '<div class="item-menu">';
+					// echo '<i class="material-icons"></i>';
+					// echo '<span>'.$this->tag->linkTo("ibc_archivo_digital/index/2015", "2015").'</span>';
+					// echo '</div>';
+					//
+					// echo '<div class="item-menu">';
+					// echo '<i class="material-icons"></i>';
+					// echo '<span>'.$this->tag->linkTo("ibc_archivo_digital/index/2016", "2016").'</span>';
+					// echo '</div>';
+					//
+					// echo '<div class="item-menu">';
+					// echo '<i class="material-icons"></i>';
+					// echo '<span>'.$this->tag->linkTo("ibc_archivo_digital/index/2017", "2017").'</span>';
+					// echo '</div>';
 
 					echo '<div class="item-menu">';
 					echo '<i class="material-icons"></i>';
@@ -451,6 +459,7 @@ class Elements extends Component
 				}
 			}
 			echo $menu_usuario;
+			echo '</div>';
 			// echo '<div class="item-menu">';
 			// echo '<i class="material-icons"></i>';
 			// echo '<span>'.$this->tag->linkTo("ibc_usuario/editarperfil", "Editar Perfil").'</span>';

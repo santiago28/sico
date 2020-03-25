@@ -4,7 +4,7 @@ $('.asistencia').each(function() {
 	var periodo_tipo = $('#periodo_tipo').val();
 	if( periodo_tipo != 2 )
 	{
-		if( asistencia == 7 || asistencia == 8 || asistencia == 9 || asistencia == 13 ) {
+		if( asistencia == 7 || asistencia == 8 ) {
 			$(this).parent().parent().find(".excusa").removeClass("hidden");
 			$(this).parent().parent().find(".excusa").removeAttr("disabled");
 			$(this).parent().parent().find(".excusa").addClass("required");
@@ -38,7 +38,7 @@ $('.asistencia').change(function() {
 	var periodo_tipo = $('#periodo_tipo').val();
 	if( periodo_tipo != 2 )
 	{
-		if( asistencia == 7 || asistencia == 8 || asistencia == 9 || asistencia == 13) {
+		if( asistencia == 7 || asistencia == 8) {
 			$(this).parent().parent().find(".excusa").removeClass("hidden").addClass("required");
 			$(this).parent().parent().find(".excusa").removeAttr("disabled");
 		} else {

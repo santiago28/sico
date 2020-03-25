@@ -32,6 +32,12 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 	*
 	* @var integer
 	*/
+	public $recorrido_virtual;
+
+	/**
+	*
+	* @var integer
+	*/
 	public $id_sede_contrato;
 
 	/**
@@ -677,7 +683,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 			";
 		}
 	}else {
-		if ($acta->recorrido == 3 and $acta->id_periodo == 70) {
+		if ($acta->recorrido == 3 && $acta->id_periodo == 70) {
 			$pie_pagina = "<div id='pie_pagina'>
 
 			<div class='pull-left' style='padding-left: 60px; width: 50%; text-align: center; float: left;'>________________________________________________<br>NOMBRE TÉCNICO DE CONTEO</div>
@@ -848,41 +854,64 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 			$html .="</div>";
 		}
 	}else {
-		$html .= $encabezado;
-		$html .= $totalizacion_asistencia;
-		$html .= "
-		<div class='seccion' id='datos_generales'>
-		<div class='fila center bold'><div style='border:none; width: 100%'>2. DATOS GENERALES</div></div>
-		<div class='fila col3'>
-		<div>2.1 FECHA VISITA:</div>
-		<div>2.2 HORA INICIO VISITA:</div>
-		<div>2.3 HORA FIN VISITA:</div>
-		</div>
-		<div class='fila col2'>
-		<div style='width: 55%;'>2.4 NOMBRE ENCARGADO DE LA SEDE:</div>
-		<div style='width: 40%;'>2.5 NOMBRE TÉCNICO CONTEO:</div>
-		</div>
-		<div class='fila col2'>
-		<div>2.6 CUENTA CON VALLA DE IDENTIFICACIÓN:</div>
-		<div>2.7 CORRECCIÓN DIRECCIÓN:</div>
-		</div>
-		<div class='fila col2'>
-		<div>2.8 CUENTA CON REGISTRO FOTOGRÁFICO FÍSICO:</div>
-		<div>2.9 CUENTA CON REGISTRO FOTOGRÁFICO DIGITAL:</div>
-		</div>
-		<div class='clear'></div>
-		</div>
-		<div class='seccion' id='observaciones'>
-		<div class='fila center bold'><div style='border:none; width: 100%'>3. OBSERVACIONES AL MOMENTO DE LA VISITA DE CONTEO</div></div>
-		<div class='fila observacion' style='margin-top:0px;'><div>3.1 OBSERVACIÓN DEL TÉCNICO DE CONTEO:$aiepi</div></div>
-		<div class='fila observacion'><div>3.2 OBSERVACIÓN DEL ENCARGADO DE LA SEDE:</div></div>
-		<div class='clear'></div>
-		</div>";
-		$html .= $pie_pagina;
+		if ($acta->recorrido == 3 && $acta->id_periodo == 70) {
+			// $html .= $encabezado;
+			// $html .= $totalizacion_asistencia;
+			// $html .= "
+			// <div class='seccion' id='datos_generales'>
+			// <div class='fila center bold'><div style='border:none; width: 100%'>2. DATOS GENERALES</div></div>
+			// <div class='fila col3'>
+			// <div>2.1 FECHA VISITA:</div>
+			// <div>2.2 HORA INICIO VISITA VIRTUAL:</div>
+			// <div>2.3 HORA FIN VISITA VIRTUAL:</div>
+			// </div>
+			// <div class='clear'></div>
+			// </div>
+			// <div class='seccion' id='observaciones'>
+			// <div class='fila center bold'><div style='border:none; width: 100%'>3. OBSERVACIONES AL MOMENTO DE LA VISITA DE CONTEO</div></div>
+			// <div class='fila observacion' style='margin-top:0px; height: 300px;'><div>3.1 OBSERVACIÓN DEL TÉCNICO DE CONTEO:<br>Tras la declaratoria de “Emergencia Sanitaria” en todo el territorio colombiano por parte del Ministerio de Salud y Protección Social, según Resolución 385 del 12 de marzo de 2020 y de calamidad pública por Decreto Municipal 373 del 16 de marzo de 2020, el Programa Buen Comienzo impartió mediante Circular 20206000078 del 17 de marzo de 2020,  unas orientaciones para la “flexibilización de la atención  como medida  de contención  en la propagación del COVID-19”, tendientes a garantizar la prestación del servicio de atención integral a la primera infancia a través de diferente estrategias por parte de las entidades prestadoras del servicio, las cuales deben ser objeto de verificación por parte de la interventoría, a través medios no presenciales. Adicional a lo anterior, mediante Decreto 457 del 22 de marzo de 2020, el Gobierno Nacional ordenó el aislamiento preventivo obligatorio de todas las personas habitantes de la República de Colombia, entre el 25 de marzo y el 13 de abril de 2020, con algunas excepciones. Con fundamento en lo anterior, el equipo de interventoría realiza a partir de la tercera visita, labores de seguimiento y verificación, haciendo uso de herramientas de las TIC`s, que permitan en forma remota certificar el cumplimiento de cada contrato o convenio de asociación, para lo cual las actas generadas llevarán únicamente la firma del técnico de conteo encargado de hacer la gestión telefónica con las familias y revisar las fuentes documentales.</div></div>
+			//
+			// <div class='clear'></div>
+			// </div>";
+		}else{
+			$html .= $encabezado;
+			$html .= $totalizacion_asistencia;
+			$html .= "
+			<div class='seccion' id='datos_generales'>
+			<div class='fila center bold'><div style='border:none; width: 100%'>2. DATOS GENERALES</div></div>
+			<div class='fila col3'>
+			<div>2.1 FECHA VISITA:</div>
+			<div>2.2 HORA INICIO VISITA:</div>
+			<div>2.3 HORA FIN VISITA:</div>
+			</div>
+			<div class='fila col2'>
+			<div style='width: 55%;'>2.4 NOMBRE ENCARGADO DE LA SEDE:</div>
+			<div style='width: 40%;'>2.5 NOMBRE TÉCNICO CONTEO:</div>
+			</div>
+			<div class='fila col2'>
+			<div>2.6 CUENTA CON VALLA DE IDENTIFICACIÓN:</div>
+			<div>2.7 CORRECCIÓN DIRECCIÓN:</div>
+			</div>
+			<div class='fila col2'>
+			<div>2.8 CUENTA CON REGISTRO FOTOGRÁFICO FÍSICO:</div>
+			<div>2.9 CUENTA CON REGISTRO FOTOGRÁFICO DIGITAL:</div>
+			</div>
+			<div class='clear'></div>
+			</div>
+			<div class='seccion' id='observaciones'>
+			<div class='fila center bold'><div style='border:none; width: 100%'>3. OBSERVACIONES AL MOMENTO DE LA VISITA DE CONTEO</div></div>
+			<div class='fila observacion' style='margin-top:0px;'><div>3.1 OBSERVACIÓN DEL TÉCNICO DE CONTEO:$aiepi</div></div>
+			<div class='fila observacion' style='height: 120px;'><div>3.2 OBSERVACIÓN DEL ENCARGADO DE LA SEDE:</div></div>
+			<div class='clear'></div>
+			</div>";
+			$html .= $pie_pagina;
 
-		$html .= "<div class='paginacion'>PÁGINA DEL PRESTADOR</div>";
-		//Página en blanco para impresión a doble cara
-		$html .= "<div class='seccion encabezado' style='border: none'></div>";
+			$html .= "<div class='paginacion'>PÁGINA DEL PRESTADOR</div>";
+			//Página en blanco para impresión a doble cara
+			$html .= "<div class='seccion encabezado' style='border: none'></div>";
+		}
+
+
 	}
 	//Página 1
 	$aiepi = "";
@@ -980,7 +1009,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 			</div>
 			<div class='seccion' id='observaciones'>
 			<div class='fila center bold'><div style='border:none; width: 100%'>3. OBSERVACIONES AL MOMENTO DE LA VISITA DE CONTEO</div></div>
-			<div class='fila observacion' style='margin-top:0px;'><div>3.1 OBSERVACIÓN DEL TÉCNICO DE CONTEO:$aiepi</div></div>
+			<div class='fila observacion' style='margin-top:0px; height: 300px;'><div>3.1 OBSERVACIÓN DEL TÉCNICO DE CONTEO:<br>Tras la declaratoria de “Emergencia Sanitaria” en todo el territorio colombiano por parte del Ministerio de Salud y Protección Social, según Resolución 385 del 12 de marzo de 2020 y de calamidad pública por Decreto Municipal 373 del 16 de marzo de 2020, el Programa Buen Comienzo impartió mediante Circular 20206000078 del 17 de marzo de 2020,  unas orientaciones para la “flexibilización de la atención  como medida  de contención  en la propagación del COVID-19”, tendientes a garantizar la prestación del servicio de atención integral a la primera infancia a través de diferente estrategias por parte de las entidades prestadoras del servicio, las cuales deben ser objeto de verificación por parte de la interventoría, a través medios no presenciales. Adicional a lo anterior, mediante Decreto 457 del 22 de marzo de 2020, el Gobierno Nacional ordenó el aislamiento preventivo obligatorio de todas las personas habitantes de la República de Colombia, entre el 25 de marzo y el 13 de abril de 2020, con algunas excepciones. Con fundamento en lo anterior, el equipo de interventoría realiza a partir de la tercera visita, labores de seguimiento y verificación, haciendo uso de herramientas de las TIC`s, que permitan en forma remota certificar el cumplimiento de cada contrato o convenio de asociación, para lo cual las actas generadas llevarán únicamente la firma del técnico de conteo encargado de hacer la gestión telefónica con las familias y revisar las fuentes documentales.</div></div>
 
 			<div class='clear'></div>
 			</div>";

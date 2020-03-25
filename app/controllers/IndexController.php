@@ -15,6 +15,8 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
+			// var_dump($this->user);
+			$this->persistent->nombre = $this->user["nombre"];
     	$this->persistent->parameters = null;
     	$this->assets
     	->addCss('css/carousel.css');
