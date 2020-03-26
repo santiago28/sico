@@ -35,7 +35,7 @@
 			<td>8. TOTAL DE NIÑOS Y NIÑAS CON EXCUSA MEDICA MENOR A 15 DÍAS</td>
 			<td>{{ asiste8 }}</td>
 		</tr>
-		{% if(acta.recorrido == 3 and acta.id_periodo == 70) %}
+		{% if((acta.recorrido == 3 and acta.id_periodo == 70) or acta.recorrido_virtual == 1) %}
 		<tr>
 			<td>9. GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL VÁLIDA CONFIRMANDO ATENCIÓN</td>
 			<td>{{ asiste9 }}</td>
@@ -93,7 +93,7 @@
 	</div>
 </div>
 <div class="form-group">
-	{% if(acta.recorrido == 3 and acta.id_periodo == 70) %}
+	{% if((acta.recorrido == 3 and acta.id_periodo == 70) or acta.recorrido_virtual == 1) %}
 	<label class="col-sm-2 control-label" for="horaInicio">* Hora Inicio Virtual</label>
 	{% else %}
 	<label class="col-sm-2 control-label" for="horaInicio">* Hora Inicio</label>
@@ -103,7 +103,7 @@
 	</div>
 </div>
 <div class="form-group">
-	{% if(acta.recorrido == 3 and acta.id_periodo == 70) %}
+	{% if((acta.recorrido == 3 and acta.id_periodo == 70) or acta.recorrido_virtual == 1) %}
 	<label class="col-sm-2 control-label" for="horaFin">* Hora Fin Virtual</label>
 	{% else %}
 	<label class="col-sm-2 control-label" for="horaFin">* Hora Fin</label>
@@ -113,7 +113,7 @@
 	</div>
 </div>
 {% if(periodo_tipo != 2) %}
-{% if(acta.recorrido == 3 and acta.id_periodo == 70) %}
+{% if((acta.recorrido == 3 and acta.id_periodo == 70) or acta.recorrido_virtual == 1) %}
 
 {% else %}
 <div class="form-group">
@@ -163,7 +163,7 @@
 </div>
 
 {% endif %}
-{% if(acta.recorrido == 3 and acta.id_periodo == 70) %}
+{% if((acta.recorrido == 3 and acta.id_periodo == 70) or acta.recorrido_virtual == 1) %}
 {% else %}
 <div class="form-group">
 	<label class="col-sm-2 control-label" for="vallaClasificacion">* Valla de Identificación</label>
@@ -196,14 +196,14 @@
 <div class="form-group">
 	<label class="col-sm-2 control-label" for="observacionUsuario">Observación Interventor</label>
 	<div class="col-sm-10">
-		{% if(acta.recorrido == 3 and acta.id_periodo == 70) %}
+		{% if((acta.recorrido == 3 and acta.id_periodo == 70) or acta.recorrido_virtual == 1) %}
 		{{ text_area("observacionUsuario", "rows" : "4", "class" : "form-control", "value" : "Tras la declaratoria de “Emergencia Sanitaria” en todo el territorio colombiano por parte del Ministerio de Salud y Protección Social, según Resolución 385 del 12 de marzo de 2020 y de calamidad pública por Decreto Municipal 373 del 16 de marzo de 2020, el Programa Buen Comienzo impartió mediante Circular 20206000078 del 17 de marzo de 2020,  unas orientaciones para la “flexibilización de la atención  como medida  de contención  en la propagación del COVID-19”, tendientes a garantizar la prestación del servicio de atención integral a la primera infancia a través de diferente estrategias por parte de las entidades prestadoras del servicio, las cuales deben ser objeto de verificación por parte de la interventoría, a través medios no presenciales. Adicional a lo anterior, mediante Decreto 457 del 22 de marzo de 2020, el Gobierno Nacional ordenó el aislamiento preventivo obligatorio de todas las personas habitantes de la República de Colombia, entre el 25 de marzo y el 13 de abril de 2020, con algunas excepciones. Con fundamento en lo anterior, el equipo de interventoría realiza a partir de la tercera visita, labores de seguimiento y verificación, haciendo uso de herramientas de las TIC`s, que permitan en forma remota certificar el cumplimiento de cada contrato o convenio de asociación, para lo cual las actas generadas llevarán únicamente la firma del técnico de conteo encargado de hacer la gestión telefónica con las familias y revisar las fuentes documentales.") }}
 		{% else %}
 		{{ text_area("observacionUsuario", "rows" : "4", "class" : "form-control") }}
 {% endif %}
 	</div>
 </div>
-{% if(acta.recorrido == 3 and acta.id_periodo == 70) %}
+{% if((acta.recorrido == 3 and acta.id_periodo == 70) or acta.recorrido_virtual == 1) %}
 {% else %}
 <div class="form-group">
 	<label class="col-sm-2 control-label" for="observacionEncargado">Observación Encargado Sede</label>

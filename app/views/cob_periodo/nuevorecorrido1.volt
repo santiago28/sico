@@ -25,6 +25,15 @@
         </div>
     </div>
     <div class="form-group">
+      <label class="col-sm-2 control-label" for="carga">Recorrido Virtual</label>
+      <div class="col-sm-10">
+        <select name="recorrido_virtual" class="form-control">
+          <option value="2">No</option>
+          <option value="1">Sí</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
         <label class="col-sm-2 control-label" for="modalidad">¿Base de datos de Facturación?</label>
         <div class="col-sm-10">
         	<select id="facturacion" name="facturacion" class="form-control">

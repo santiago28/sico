@@ -282,7 +282,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 		return $rows;
 	}
 
-	public function generarActasRcarga($cob_periodo, $carga, $facturacion, $recorrido_anterior) {
+	public function generarActasRcarga($cob_periodo, $carga, $facturacion, $recorrido_anterior, $recorrido_virtual) {
 		$recorrido = $recorrido_anterior + 1;
 		$db = $this->getDI()->getDb();
 		$config = $this->getDI()->getConfig();
@@ -371,7 +371,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 				$sql .= ")";
 				$db->query($sql);
 			}
-			$db->query("INSERT IGNORE INTO cob_actaconteo (id_periodo, id_carga, recorrido, id_sede_contrato, id_contrato, id_modalidad, modalidad_nombre, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_oferente, oferente_nombre) SELECT $cob_periodo->id_periodo, $carga->id_carga, $recorrido, id_sede_contrato, id_contrato, id_modalidad, modalidad_nombre, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_oferente, oferente_nombre FROM $tabla_mat");
+			$db->query("INSERT IGNORE INTO cob_actaconteo (id_periodo, id_carga, recorrido, recorrido_virtual, id_sede_contrato, id_contrato, id_modalidad, modalidad_nombre, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_oferente, oferente_nombre) SELECT $cob_periodo->id_periodo, $carga->id_carga, $recorrido, $recorrido_virtual, id_sede_contrato, id_contrato, id_modalidad, modalidad_nombre, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_oferente, oferente_nombre FROM $tabla_mat");
 			$db->query("REPLACE INTO bc_sede_contrato (id_sede_contrato, id_oferente, oferente_nombre, id_contrato, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_modalidad, modalidad_nombre, estado) SELECT id_sede_contrato, id_oferente, oferente_nombre, id_contrato, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_modalidad, modalidad_nombre, '1' FROM $tabla_mat");
 			$db->query("INSERT IGNORE INTO cob_actaconteo_persona (id_actaconteo, id_periodo, recorrido, id_contrato, id_persona, numDocumento, primerNombre, segundoNombre, primerApellido, segundoApellido, id_grupo, grupo, fechaNacimiento) SELECT (SELECT id_actaconteo FROM cob_actaconteo WHERE cob_actaconteo.id_sede_contrato = $tabla_mat.id_sede_contrato AND cob_actaconteo.id_periodo = $cob_periodo->id_periodo AND cob_actaconteo.recorrido = $recorrido), $cob_periodo->id_periodo, $recorrido, id_contrato, id_persona, numDocumento, primerNombre, segundoNombre, primerApellido, segundoApellido, id_grupo, grupo, fechaNacimiento FROM $tabla_mat");
 			//Si es Itinerante se graban las madres comunitarias
@@ -384,7 +384,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 			return TRUE;
 		}
 
-		public function generarActasR1($cob_periodo, $carga, $modalidades, $facturacion) {
+		public function generarActasR1($cob_periodo, $carga, $modalidades, $facturacion, $recorrido_virtual) {
 			$db = $this->getDI()->getDb();
 			$config = $this->getDI()->getConfig();
 			$timestamp = new DateTime();
@@ -455,7 +455,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 		}
 		$db->query("DELETE FROM $tabla_mat WHERE fechaRetiro > 0000-00-00");
 		$db->query("REPLACE INTO bc_sede_contrato (id_sede_contrato, id_oferente, oferente_nombre, id_contrato, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_modalidad, modalidad_nombre, estado) SELECT id_sede_contrato, id_oferente, oferente_nombre, id_contrato, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_modalidad, modalidad_nombre, '1' FROM $tabla_mat");
-		$db->query("INSERT IGNORE INTO cob_actaconteo (id_periodo, id_carga, recorrido, id_sede_contrato, id_contrato, id_modalidad, modalidad_nombre, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_oferente, oferente_nombre) SELECT $cob_periodo->id_periodo, $carga->id_carga, '1', id_sede_contrato, id_contrato, id_modalidad, modalidad_nombre, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_oferente, oferente_nombre FROM $tabla_mat");
+		$db->query("INSERT IGNORE INTO cob_actaconteo (id_periodo, id_carga, recorrido, recorrido_virtual, id_sede_contrato, id_contrato, id_modalidad, modalidad_nombre, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_oferente, oferente_nombre) SELECT $cob_periodo->id_periodo, $carga->id_carga, '1', $recorrido_virtual, id_sede_contrato, id_contrato, id_modalidad, modalidad_nombre, id_sede, sede_nombre, sede_barrio, sede_direccion, sede_telefono, id_oferente, oferente_nombre FROM $tabla_mat");
 		$db->query("INSERT IGNORE INTO cob_actaconteo_persona (id_actaconteo, id_periodo, recorrido, id_contrato, id_persona, numDocumento, primerNombre, segundoNombre, primerApellido, segundoApellido, id_grupo, grupo, fechaNacimiento) SELECT (SELECT id_actaconteo FROM cob_actaconteo WHERE cob_actaconteo.id_sede_contrato = $tabla_mat.id_sede_contrato AND cob_actaconteo.id_periodo = $cob_periodo->id_periodo AND cob_actaconteo.recorrido = 1), $cob_periodo->id_periodo, 1, id_contrato, id_persona, numDocumento, primerNombre, segundoNombre, primerApellido, segundoApellido, id_grupo, grupo, fechaNacimiento FROM $tabla_mat");
 		//Si es Itinerante se graban las madres comunitarias
 		if($cob_periodo->tipo == 4) {
@@ -620,7 +620,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 		}
 		/*if ($acta->recorrido == '1') {*/
 		$titulo_encabezado = "";
-		if ($acta->recorrido == 3 && $acta->id_periodo == 70) {
+		if (($acta->recorrido == 3 && $acta->id_periodo == 70) || $acta->recorrido_virtual == 1) {
 			$titulo_encabezado = "ACTA DE CONTEO VERIFICACIÓN TELEFÓNICA Y/O DOCUMENTAL DE LA ATENCIÓN DEL 100% DE LOS BENEFICIARIOS REPORTADOS EN EL SIBC";
 		}else{
 			$titulo_encabezado = "ACTA DE CONTEO VERIFICACIÓN FÍSICA DE LA ATENCIÓN DEL 100% DE LOS BENEFICIARIOS REPORTADOS EN EL SIBC";
@@ -683,7 +683,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 			";
 		}
 	}else {
-		if ($acta->recorrido == 3 && $acta->id_periodo == 70) {
+		if (($acta->recorrido == 3 && $acta->id_periodo == 70) || $acta->recorrido_virtual == 1) {
 			$pie_pagina = "<div id='pie_pagina'>
 
 			<div class='pull-left' style='padding-left: 60px; width: 50%; text-align: center; float: left;'>________________________________________________<br>NOMBRE TÉCNICO DE CONTEO</div>
@@ -730,7 +730,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 
 	}
 	else {
-		if ($acta->recorrido == 3 && $acta->id_periodo == 70) {
+		if (($acta->recorrido == 3 && $acta->id_periodo == 70) || $acta->recorrido_virtual == 1) {
 			$totalizacion_asistencia = "<div class='seccion' id='totalizacion_asistencia'>
 			<div class='fila center bold'><div style='border:none; width: 100%'>1. TOTALIZACIÓN DE ASISTENCIA</div></div>
 			<div class='fila'><div>1.1 PRESENTE</div></div>
@@ -854,7 +854,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 			$html .="</div>";
 		}
 	}else {
-		if ($acta->recorrido == 3 && $acta->id_periodo == 70) {
+		if (($acta->recorrido == 3 && $acta->id_periodo == 70) || $acta->recorrido_virtual == 1) {
 			// $html .= $encabezado;
 			// $html .= $totalizacion_asistencia;
 			// $html .= "
@@ -996,7 +996,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 	}
 	else
 	{
-		if ($acta->recorrido == 3 && $acta->id_periodo == 70) {
+		if (($acta->recorrido == 3 && $acta->id_periodo == 70) || $acta->recorrido_virtual == 1) {
 			$html .= "
 			<div class='seccion' id='datos_generales'>
 			<div class='fila center bold'><div style='border:none; width: 100%'>2. DATOS GENERALES</div></div>
