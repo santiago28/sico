@@ -62,7 +62,7 @@
                 <td><div class='hide id_grupo'>{{ beneficiario.id_grupo }}</div>{{ beneficiario.grupo }}</td>
                 <td><input type="hidden" name="id_actaconteo_persona[]" value="{{ beneficiario.id_actaconteo_persona }}">{{ select("asistencia[]", asistencia, "value" : beneficiario.asistencia, "class" : "form-control asistencia required") }}</td>
                 <td>
-                <?php if($beneficiario->asistencia == 7 || $beneficiario->asistencia == 8 ){ ?>
+                <?php if($beneficiario->asistencia == 7 || $beneficiario->asistencia == 8 || $beneficiario->asistencia == 9 || $beneficiario->asistencia == 13){ ?>
                   <?php $fecha_excusa = $this->conversiones->fecha(2, $beneficiario->CobActaconteoPersonaExcusa->fecha); ?>
                   <input type="hidden" class="excusa" name="id_actaconteo_persona2[]" value="{{ beneficiario.id_actaconteo_persona }}">
                   {{ text_field("motivo[]", "placeholder" : "Motivo", "class" : "form-control excusa", "value" : beneficiario.CobActaconteoPersonaExcusa.motivo) }}

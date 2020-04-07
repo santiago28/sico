@@ -379,7 +379,7 @@ class Elements extends Component
 				if($user['nivel'] <= 2){
 					$menu ['cob_ajuste'] = array ('caption' => 'Ajustes', 'action' => 'index');
 					$menu ['bc_reporte'] = array ('caption' => 'Reportes', 'action' => '');
-					$menu ['ibc_usuario'] = array ('caption' => 'Usuarios', 'action' => 'index');
+					// $menu ['ibc_usuario'] = array ('caption' => 'Usuarios', 'action' => 'index');
 				}
 				$menu_usuario .= '<div class="item-menu-titulo"><span>Info</span></div>';
 
