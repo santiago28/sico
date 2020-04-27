@@ -898,8 +898,7 @@ class Elements extends Component
 						'3' => '3',
 						'4' => '4',
 						'5' => '5',
-						'6' => '6',
-						'7' => '7');
+						'6' => '6');
 						break;
 						case "datos_valla":
 						return array (

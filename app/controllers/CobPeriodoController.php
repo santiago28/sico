@@ -648,8 +648,12 @@ class CobPeriodoController extends ControllerBase
 				$db->query("DELETE FROM cob_periodo WHERE id_periodo = $id_periodo");
 				// Si es Entorno Familiar
 				if($cob_periodo->tipo == 2) {
-					$db->query("DELETE FROM cob_actamuestreo WHERE id_periodo = $id_periodo");
-					$db->query("DELETE FROM cob_actamuestreo_persona WHERE id_periodo = $id_periodo");
+					// $db->query("DELETE FROM cob_actamuestreo WHERE id_periodo = $id_periodo");
+					// $db->query("DELETE FROM cob_actamuestreo_persona WHERE id_periodo = $id_periodo");
+					$db->query("DELETE FROM cob_actaconteo WHERE id_periodo = $id_periodo");
+					$db->query("DELETE FROM cob_actaconteo_persona WHERE id_periodo = $id_periodo");
+					$db->query("DELETE FROM cob_actaconteo_persona_facturacion WHERE id_periodo = $id_periodo");
+					$db->query("DELETE FROM cob_periodo_contratosedecupos WHERE id_periodo = $id_periodo");
 				} else {
 					//Para el resto de periodos se eliminan las tablas de actas
 					$db->query("DELETE FROM cob_actaconteo WHERE id_periodo = $id_periodo");

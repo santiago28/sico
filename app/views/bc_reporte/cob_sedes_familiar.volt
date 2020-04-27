@@ -14,13 +14,16 @@
             <th>Nombre sede</th>
             <th>Total de cupos en el SIBC por sede</th>
             <th>Total de cupos por sede</th>
+            <th>Total de cupos a certificar Niños y Niñas</th>
+            <th>Total de cupos a certificar Madres Gestantes</th>
+            <th>Total de cupos a certificar Madres Lactantes</th>
             <th>Total beneficiarios que asistieron (1)</th>
             <th>Total beneficiarios retirados antes del día de corte de periodo (2)</th>
             <th>Total beneficiarios ausentes (3)</th>
             <th>Total beneficiarios con excusa válida (4)</th>
             <th>Total beneficiarios gestión telefónica certificada (5)</th>
             <th>Total beneficiarios llamada telefónica no  certificada (6)</th>
-            <th>Total beneficiarios con encuentro en casa (7)</th>
+            {# <th>Total beneficiarios con encuentro en casa (7)</th> #}
             <th>Total beneficiarios descontados por ajuste posterior al recorrido (11)</th>
             <th>Total de cupos a certificar</th>
             <!--<th>Total de cupos a certificar Menores de 2 años</th>
@@ -49,13 +52,16 @@
             <td>{{ sede.CobActaconteo.sede_nombre }}</td>
             <td>{{ cuposSIBCsede }}</td>
             <td>{{ sede.CobPeriodoContratosedecupos.cuposSede }}</td>
+            <td>{{ sede.CobActaconteo.getBeneficiariosSedesNinosyNinas() }}</td>
+            <td>{{ sede.CobActaconteo.getBeneficiariosSedesGestantes() }}</td>
+            <td>{{ sede.CobActaconteo.getBeneficiariosSedesLactactes() }}</td>
             <td>{{ asistencia['asiste1'] }}</td>
             <td>{{ asistencia['asiste2'] }}</td>
             <td>{{ asistencia['asiste3'] }}</td>
             <td>{{ asistencia['asiste4'] }}</td>
             <td>{{ asistencia['asiste5'] }}</td>
             <td>{{ asistencia['asiste6'] }}</td>
-            <td>{{ asistencia['asiste7'] }}</td>
+            {# <td>{{ asistencia['asiste7'] }}</td> #}
             <td>{% if (asistencia['asiste11'] > 0) %}-{% endif %}- {{ asistencia['asiste11'] }}</td>
             <td><?php echo $sede->getCertificarSede($sede->id_sede_contrato, $sede->id_periodo); ?></td>
             <!--<td>{{ edades['menor2'] }}</td>

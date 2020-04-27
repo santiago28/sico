@@ -165,4 +165,68 @@ class CobActaconteoPersona extends \Phalcon\Mvc\Model
     }
   }
 
+  public function getAsistenciaActasDetail($id_modalidad)
+  {
+    if ($id_modalidad == 5) {
+      switch ($this->asistencia) {
+        case 1:
+        return "ASISTE";
+        break;
+        case 2:
+        return "RETIRADO";
+        break;
+        case 3:
+        return "AUSENTE";
+        break;
+        case 4:
+        return "BENEFICIARIO CON EXCUSA VALIDA";
+        break;
+        case 5:
+        return "AUSENTE CON LLAMADA TELEFÓNICA CONFIRMANDO ATENCIÓN";
+        break;
+        case 6:
+        return "AUSENTE CON LLAMADA TELEFÓNICA NEGANDO ATENCIÓN";
+        break;
+        default:
+        return "";
+        break;
+      }
+    }else{
+      switch ($this->asistencia) {
+        case 1:
+        return "PRESENTE";
+        break;
+        case 2:
+        return "AUSENTE CON EXCUSA FÍSICA";
+        break;
+        case 3:
+        return "AUSENTE CON EXCUSA TELEFÓNICA";
+        break;
+        case 4:
+        return "RETIRADO ANTES DEL DÍA DE CORTE DE PERIODO";
+        break;
+        case 5:
+        return "RETIRADO DESPUES DEL DÍA DE CORTE DE PERIODO";
+        break;
+        case 6:
+        return "AUSENTE QUE NO PRESENTA EXCUSA EL DÍA DEL REPORTE";
+        break;
+        case 7:
+        return "CON EXCUSA MÉDICA MAYOR O IGUAL A 15 DIAS";
+        break;
+        case 8:
+        return "CON EXCUSA MÉDICA MENOR A 15 DIAS";
+        break;
+        case 9:
+        return "GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL VÁLIDA CONFIRMANDO ATENCIÓN";
+        break;
+        case 13:
+        return "GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL INVÁLIDA NEGANDO ATENCIÓN";
+        break;
+        default:
+        return "";
+        break;
+      }
+    }
+  }
 }

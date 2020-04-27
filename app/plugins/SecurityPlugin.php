@@ -329,6 +329,12 @@ class SecurityPlugin extends Plugin
       'oferente_periodos' => array(
         'nivelPermiso' => '4'
       ),
+      'oferente_periodos_consolidado' => array(
+        'nivelPermiso' => '4'
+      ),
+      'cob_beneficiarios_consolidados_periodo' => array(
+        'nivelPermiso' => '4'
+      ),
       'beneficiarios_contratoparcial' => array(
         'nivelPermiso' => '4'
       ),
@@ -338,6 +344,9 @@ class SecurityPlugin extends Plugin
       'beneficiarios_contratofacturacion' => array(
         'nivelPermiso' => '4'
       ),
+      'beneficiarios_periodofacturacion' => array(
+        'nivelPermiso' => '2'
+      ),
       'beneficiarios_contratoajustes' => array(
         'nivelPermiso' => '4'
       ),'contratos_liquidacion' => array(
@@ -346,7 +355,16 @@ class SecurityPlugin extends Plugin
         'nivelPermiso' => '2'
       ),'buscar_contratoliquidacion' => array(
         'nivelPermiso' => '2'
-      )
+      ),
+      'beneficiarios_consolidados_periodos' => array(
+        'nivelPermiso' => '2'
+      ),
+      'cob_beneficiarios_consolidados_periodo' => array(
+        'nivelPermiso' => '2'
+      ),
+      'beneficiarios_periodofacturacion_consolidado' => array(
+        'nivelPermiso' => '2'
+      ),
     ),
     'cob_verificacion' => array(
       'index' => array(

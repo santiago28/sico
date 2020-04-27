@@ -71,17 +71,17 @@
 			<td>{{ asiste4 }}</td>
 		</tr>
 		<tr>
-			<td>1.5 LLAMADA TELEFÓNICA PRECERTIFICADA</td>
+			<td>1.5 AUSENTE CON LLAMADA TELEFÓNICA CONFIRMANDO ATENCIÓN</td>
 			<td>{{ asiste5 }}</td>
 		</tr>
 		<tr>
-			<td>1.6 LLAMADA TELEFÓNICA NO CERTIFICADA</td>
+			<td>1.6 AUSENTE CON LLAMADA TELEFÓNICA NEGANDO ATENCIÓN</td>
 			<td>{{ asiste6 }}</td>
 		</tr>
-		<tr>
+		{# <tr>
 			<td>1.7 ENCUENTRO EN CASA</td>
 			<td>{{ asiste7 }}</td>
-		</tr>
+		</tr> #}
 		{% endif %}
 	</tbody>
 </table>
