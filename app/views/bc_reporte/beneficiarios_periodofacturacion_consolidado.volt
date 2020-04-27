@@ -26,6 +26,7 @@ setTimeout(function(){
     var Export = [];
     {% for beneficiario in beneficiarios %}
     Export.push({
+      "Contrato": "{{ beneficiario.id_contrato }}",
       "Nombre sede": "{{ beneficiario.CobActaconteo.sede_nombre }}",
       "Nombre Grupo": "{{ beneficiario.grupo }}",
       "ID Persona": "{{ beneficiario.id_persona }}",
@@ -37,12 +38,8 @@ setTimeout(function(){
       "Fecha Registro Matricula": "{{ beneficiario.fechaRegistro }}",
       "Fecha Registro Beneficiario": "{{ beneficiario.fechaInicioAtencion }}",
       "Fecha Retiro": "{{ beneficiario.fechaRetiro }}",
-      "Asistencia  R1": "{{ beneficiario.asistencia1 }}",
-      "Asistencia 1": "{{ beneficiario.getAsistenciaActas1Detail(beneficiario.CobActaconteo.id_modalidad) }}",
-      "Asistencia R2": "{{ beneficiario.asistencia2 }}",
-      "Asistencia 2": "{{ beneficiario.getAsistenciaActas2Detail(beneficiario.CobActaconteo.id_modalidad) }}",
-      "Asistencia R3": "{{ beneficiario.asistencia3 }}",
-      "Asistencia 3": "{{ beneficiario.getAsistenciaActas3Detail(beneficiario.CobActaconteo.id_modalidad) }}",
+      "Asistencia  Final": "{{ beneficiario.asistenciaFinalFacturacion }}",
+      "Asistencia Final Texto": "{{ beneficiario.getAsistenciaFinalDetail(beneficiario.CobActaconteo.id_modalidad) }}",
       "Certificación Facturación": "{{ beneficiario.getCertificacionFacturacion() }}"
     })
     {% endfor %}

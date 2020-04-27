@@ -254,6 +254,7 @@ class BcReporteController extends ControllerBase
 			return $this->response->redirect("/");
 		}
 		$this->view->contratos = $contratos;
+		$this->view->nivel = $this->user['nivel'];
 	}
 
 	/**

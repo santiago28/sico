@@ -925,6 +925,12 @@ class CobActaconteoPersonaFacturacion extends \Phalcon\Mvc\Model
         case 6:
         return "AUSENTE CON LLAMADA TELEFÓNICA NEGANDO ATENCIÓN";
         break;
+        case 10:
+        return "CERTIFICADO POR AJUSTE POSTERIOR AL RECORRIDO";
+        break;
+        case 11:
+        return "DESCONTADO POR AJUSTE POSTERIOR AL RECORRIDO";
+        break;
         default:
         return "";
         break;
@@ -957,6 +963,12 @@ class CobActaconteoPersonaFacturacion extends \Phalcon\Mvc\Model
         break;
         case 9:
         return "GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL VÁLIDA CONFIRMANDO ATENCIÓN";
+        break;
+        case 10:
+        return "CERTIFICADO POR AJUSTE POSTERIOR AL RECORRIDO";
+        break;
+        case 11:
+        return "DESCONTADO POR AJUSTE POSTERIOR AL RECORRIDO";
         break;
         case 13:
         return "GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL INVÁLIDA NEGANDO ATENCIÓN";

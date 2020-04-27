@@ -18,7 +18,8 @@
             <th>Segundo Apellido<input autocomplete='off' class='filter form-control input-sm' name='segundo apellido' data-col='segundo apellido'/></th>
             <th>Fecha Registro Matrícula<input autocomplete='off' class='filter form-control input-sm' name='fecha registro matricula' data-col='fecha registro matricula'/></th>
             <th>Fecha Registro Beneficiario<input autocomplete='off' class='filter form-control input-sm' name='fecha registro beneficiario' data-col='fecha registro beneficiario'/></th>
-            <th>Fecha Retiro<input autocomplete='off' class='filter form-control input-sm' name='fecha retiro' data-col='fecha retiro'/></th>
+						<th>Fecha Retiro<input autocomplete='off' class='filter form-control input-sm' name='fecha retiro' data-col='fecha retiro'/></th>
+            <th>Certificación Final Recorridos<input autocomplete='off' class='filter form-control input-sm' name='certificacion final recorridos' data-col='certificacion final recorridos'/></th>
             <th>Certificación Facturación<input autocomplete='off' class='filter form-control input-sm' name='certificación facturación' data-col='certificación facturación'/></th>
          </tr>
     </thead>
@@ -36,6 +37,7 @@
             <td>{{ beneficiario.fechaRegistro }}</td>
             <td>{{ beneficiario.fechaInicioAtencion }}</td>
             <td>{{ beneficiario.fechaRetiro }}</td>
+						<td>{{ beneficiario.getAsistenciaFinalDetail(beneficiario.CobActaconteo.id_modalidad) }}</td>
             <td>{{ beneficiario.getCertificacionFacturacion() }}</td>
         </tr>
     {% endfor %}
@@ -48,6 +50,7 @@
 			var Export = [];
 			{% for beneficiario in beneficiarios %}
 				Export.push({
+					"Contrato": "{{ beneficiario.id_contrato }}",
 					"Nombre sede": "{{ beneficiario.CobActaconteo.sede_nombre }}",
 					"Nombre Grupo": "{{ beneficiario.grupo }}",
 					"ID Persona": "{{ beneficiario.id_persona }}",
@@ -59,6 +62,7 @@
 					"Fecha Registro Matricula": "{{ beneficiario.fechaRegistro }}",
 					"Fecha Registro Beneficiario": "{{ beneficiario.fechaInicioAtencion }}",
 					"Fecha Retiro": "{{ beneficiario.fechaRetiro }}",
+					"Certificación Final Recorridos": "{{ beneficiario.getAsistenciaFinalDetail(beneficiario.CobActaconteo.id_modalidad) }}",
 					"Certificación Facturación": "{{ beneficiario.getCertificacionFacturacion() }}"
 				})
 			{% endfor %}

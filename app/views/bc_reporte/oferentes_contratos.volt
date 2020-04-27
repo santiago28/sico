@@ -10,11 +10,13 @@
 		</tr>
 	</thead>
 	<tbody>
+		{% if (nivel <= 1) %}
 		<tr>
 			<td>{{ link_to("bc_reporte/oferente_periodos_consolidado", "REPORTE CONSOLIDADO R1 - R2 - R3") }}</td>
 			<td>{{ link_to("bc_reporte/oferente_periodos_consolidado", "TODOS") }}</td>
 			<td>{{ link_to("bc_reporte/oferente_periodos_consolidado", "TODAS") }}</td>
 		</tr>
+		{% endif %}
 		{% for contrato in contratos %}
 		<tr>
 			<td>{{ link_to("bc_reporte/oferente_periodos/"~contrato.id_contrato, contrato.oferente_nombre) }}</td>
