@@ -15,6 +15,10 @@
             <th>Total de cupos a certificar Niños y Niñas</th>
             <th>Total de cupos a certificar Madres Gestantes</th>
             <th>Total de cupos a certificar Madres Lactantes</th>
+            <th>Total de cupos a certificar Menores de 2 años</th>
+            <th>Total de cupos a certificar Igual o mayor de 2 años y menor de 4 años</th>
+            <th>Total de cupos a certificar Igual o mayor de 4 años y menor de 6 años</th>
+            <th>Total de cupos a certificar Igual o mayor de 6 años</th>
             <th>Total de cupos en el SIBC</th>
             <th>Total beneficiarios certificados</th>
             <th>Porcentaje de Cobertura certificado</th>
@@ -23,7 +27,7 @@
     </thead>
     <tbody>
     {% for contrato in contratos %}
-
+      <?php $edades = $contrato->getEdadesContrato($contrato->id_contrato, $contrato->id_periodo); ?>
     	<?php $certificados = $contrato->countBeneficiarioscertcontrato($contrato->id_contrato, $contrato->id_periodo); ?>
     	<?php $cuposTotal = $contrato->CobPeriodoContratosedecupos->cuposTotal; ?>
     	<?php $cuposSIBC = $contrato->countBeneficiarioscontrato($contrato->id_contrato, $contrato->id_periodo); ?>
@@ -41,6 +45,10 @@
             <td>{{ contrato.CobActaconteo.getBeneficiariosContratoNinosyNinas() }}</td>
             <td>{{ contrato.CobActaconteo.getBeneficiariosContratoGestantes() }}</td>
             <td>{{ contrato.CobActaconteo.getBeneficiariosContratoLactactes() }}</td>
+            <td>{{ edades['menor2'] }}</td>
+            <td>{{ edades['mayorigual2menor4'] }}</td>
+            <td>{{ edades['mayorigual4menor6'] }}</td>
+            <td>{{ edades['mayorigual6'] }}</td>
             <td>{{ cuposSIBC }}</td>
             <td>{% if (certificados > cuposTotal) %}Se pasó{% else %}{{ certificados }}{% endif %}</td>
             <td>{% if (certificados > cuposTotal) %}Se pasó{% else %}<?php echo number_format($certificados / $cuposTotal * 100, 2, '.', ''); ?>%{% endif %}</td>
