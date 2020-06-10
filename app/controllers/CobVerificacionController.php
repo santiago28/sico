@@ -220,6 +220,7 @@ class CobVerificacionController extends ControllerBase
     public function eliminarAction($id_verificacion)
     {
         $cob_verificacion = CobVerificacion::findFirstByid_verificacion($id_verificacion);
+				$tipo = $cob_verificacion->tipo;
         if (!$cob_verificacion) {
             $this->flash->error("La verificacion no fue encontrada");
 
