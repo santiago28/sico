@@ -182,10 +182,10 @@ class CobActaconteoPersona extends \Phalcon\Mvc\Model
         return "BENEFICIARIO CON EXCUSA VALIDA";
         break;
         case 5:
-        return "AUSENTE CON LLAMADA TELEFÓNICA CONFIRMANDO ATENCIÓN";
+        return "GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL VÁLIDA CONFIRMANDO ATENCIÓN";
         break;
         case 6:
-        return "AUSENTE CON LLAMADA TELEFÓNICA NEGANDO ATENCIÓN";
+        return "GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL INVÁLIDA NEGANDO ATENCIÓN";
         break;
         default:
         return "";

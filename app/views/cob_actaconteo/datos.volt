@@ -71,11 +71,11 @@
 			<td>{{ asiste4 }}</td>
 		</tr>
 		<tr>
-			<td>1.5 AUSENTE CON LLAMADA TELEFÓNICA CONFIRMANDO ATENCIÓN</td>
+			<td>1.5 GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL VÁLIDA CONFIRMANDO ATENCIÓN</td>
 			<td>{{ asiste5 }}</td>
 		</tr>
 		<tr>
-			<td>1.6 AUSENTE CON LLAMADA TELEFÓNICA NEGANDO ATENCIÓN</td>
+			<td>1.6 GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL INVÁLIDA NEGANDO ATENCIÓN</td>
 			<td>{{ asiste6 }}</td>
 		</tr>
 		{# <tr>

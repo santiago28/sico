@@ -389,8 +389,10 @@ class CobActaconteoController extends ControllerBase
 			$this->view->id_actaconteo = $id_actaconteo;
 			$this->view->asistencia = $this->elements->getSelect("asistencia");
 			$this->view->asistenciaEC = $this->elements->getSelect("asistenciaEC");
+			$this->view->tipoVisitaEF = $this->elements->getSelect("tipoVisitaEF");
 			$this->view->acta = $acta;
 			$this->view->periodo_tipo = $cob_periodo->tipo;
+			$this->view->id_periodo = $cob_periodo->id_periodo;
 			$this->actaCerrada($acta, $this->user['nivel']);
 		}
 	}

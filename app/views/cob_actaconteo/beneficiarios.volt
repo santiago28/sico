@@ -95,9 +95,10 @@
                   <?php $fecha_excusa = $this->conversiones->fecha(2, $beneficiario->CobActaconteoPersonaExcusa->fecha); ?>
                   <input type="hidden" class="excusa" name="id_actaconteo_persona2[]" value="{{ beneficiario.id_actaconteo_persona }}">
                   <?php if($beneficiario->asistencia == 4 || $beneficiario->asistencia == 7) { ?>
-                    {{ text_field("motivo[]", "placeholder" : "Motivo", "class" : "form-control excusa", "value" : beneficiario.CobActaconteoPersonaExcusa.motivo) }}
+                    {{ text_field("motivo[]", "placeholder" : "Motivo", "class" : "form-control excusa", "value" : beneficiario.CobActaconteoPersonaExcusa.motivo, "disabled" : "disabled") }}
                   <?php } else { ?>
-                    {{ text_field("motivo[]", "placeholder" : "Gestión Telefónica", "class" : "form-control excusa", "value" : beneficiario.CobActaconteoPersonaExcusa.motivo) }}
+                    {# {{ text_field("motivo[]", "placeholder" : "Gestión Telefónica", "class" : "form-control excusa", "value" : beneficiario.CobActaconteoPersonaExcusa.motivo) }} #}
+                    {{ select("motivo[]", tipoVisitaEF,  "value" : beneficiario.CobActaconteoPersonaExcusa.motivo, "class" : "form-control required hidden excusa paquete_alimentario") }}
                   <?php } ?>
                   {{ text_field("fecha_excusa[]", "type" : "date", "class" : "form-control tipo-fecha excusa", "placeholder" : "Fecha: dd/mm/aaaa", "parsley-type" : "dateIso", "data-date-format" : "dd/mm/yyyy", "value" : fecha_excusa) }}
                   <?php if($beneficiario->asistencia == 4 || $beneficiario->asistencia == 7) { ?>
@@ -108,7 +109,8 @@
                   {{ text_field("telefono[]", "placeholder" : "Teléfono", "class" : "form-control excusa", "parsley-type" : "number", "value" : beneficiario.CobActaconteoPersonaExcusa.telefono) }}
                 <?php } else { ?>
                   <input type="hidden" class="excusa" disabled="disabled" name="id_actaconteo_persona2[]" value="{{ beneficiario.id_actaconteo_persona }}">
-                  {{ text_field("motivo[]", "placeholder" : "Gestión Telefónica", "class" : "form-control hidden excusa", "disabled" : "disabled") }}
+                  {{ select("motivo[]", tipoVisitaEF, "class" : "form-control required hidden excusa paquete_alimentario", "disabled" : "disabled") }}
+                  {# {{ text_field("motivo[]", "placeholder" : "Gestión Telefónica", "class" : "form-control hidden excusa", "disabled" : "disabled") }} #}
                   {{ text_field("fecha_excusa[]", "type" : "date", "class" : "form-control tipo-fecha hidden excusa", "placeholder" : "Fecha: dd/mm/aaaa", "parsley-type" : "dateIso", "data-date-format" : "dd/mm/yyyy", "disabled" : "disabled") }}
                   {{ text_field("profesional[]", "placeholder" : "Acudiente", "class" : "form-control hidden excusa", "disabled" : "disabled") }}
                   {{ text_field("telefono[]", "placeholder" : "Teléfono", "class" : "form-control hidden excusa", "parsley-type" : "number", "disabled" : "disabled") }}

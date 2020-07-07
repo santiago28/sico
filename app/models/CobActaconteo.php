@@ -797,8 +797,8 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 			<div class='fila'><div>1.2 RETIRADO</div></div>
 			<div class='fila'><div>1.3 AUSENTE</div></div>
 			<div class='fila'><div>1.4 BENEFICIARIO CON EXCUSA VALIDA</div></div>
-			<div class='fila'><div>1.5 AUSENTE CON LLAMADA TELEFÓNICA CONFIRMANDO ATENCIÓN</div></div>
-			<div class='fila'><div>1.6 AUSENTE CON LLAMADA TELEFÓNICA NEGANDO ATENCIÓN</div></div>
+			<div class='fila'><div>1.5 GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL VÁLIDA CONFIRMANDO ATENCIÓN</div></div>
+			<div class='fila'><div>1.6 GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL INVÁLIDA NEGANDO ATENCIÓN</div></div>
 			<div class='clear'></div>
 			</div>";
 		}else {
@@ -808,8 +808,8 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 			<div class='fila'><div>1.2 RETIRADO</div></div>
 			<div class='fila'><div>1.3 AUSENTE</div></div>
 			<div class='fila'><div>1.4 BENEFICIARIO CON EXCUSA VALIDA</div></div>
-			<div class='fila'><div>1.5 AUSENTE CON LLAMADA TELEFÓNICA CONFIRMANDO ATENCIÓN</div></div>
-			<div class='fila'><div>1.6 AUSENTE CON LLAMADA TELEFÓNICA NEGANDO ATENCIÓN</div></div>
+			<div class='fila'><div>1.5 GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL VÁLIDA CONFIRMANDO ATENCIÓN</div></div>
+			<div class='fila'><div>1.6 GESTIÓN TELEFÓNICA Y/O REVISIÓN DOCUMENTAL INVÁLIDA NEGANDO ATENCIÓN</div></div>
 			<div class='clear'></div>
 			</div>";
 		}
@@ -1074,7 +1074,7 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 		<div class='fila center bold'><div style='border:none; width: 100%'>3. OBSERVACIONES AL MOMENTO DE LA VISITA DE CONTEO</div></div>
 		<div class='fila observacion visitapresencial1'><div>3.1 OBSERVACIÓN DEL TÉCNICO DE CONTEO:$aiepi</div></div>
 		<div class='fila observacion visitapresencial1'><div>3.2 OBSERVACIÓN DEL ENCARGADO DE LA SEDE:</div></div>
-		<div class='fila observacion3 visitavirtual1'><div>3.1 OBSERVACIÓN DEL TÉCNICO DE CONTEO:$aiepi</div></div>
+		<div class='fila observacion3 visitavirtual1'><div>3.1 OBSERVACIÓN DEL TÉCNICO DE CONTEO:<br>Tras la declaratoria de “Emergencia Sanitaria” en todo el territorio colombiano por parte del Ministerio de Salud y Protección Social, según Resolución 385 del 12 de marzo de 2020 y de calamidad pública por Decreto Municipal 373 del 16 de marzo de 2020, el Programa Buen Comienzo impartió mediante Circular 20206000078 del 17 de marzo de 2020,  unas orientaciones para la “flexibilización de la atención  como medida  de contención  en la propagación del COVID-19”, tendientes a garantizar la prestación del servicio de atención integral a la primera infancia a través de diferente estrategias por parte de las entidades prestadoras del servicio, las cuales deben ser objeto de verificación por parte de la interventoría, a través medios no presenciales. Adicional a lo anterior, mediante Decreto 457 del 22 de marzo de 2020, el Gobierno Nacional ordenó el aislamiento preventivo obligatorio de todas las personas habitantes de la República de Colombia, entre el 25 de marzo y el 13 de abril de 2020, con algunas excepciones. Con fundamento en lo anterior, el equipo de interventoría realiza a partir de la tercera visita, labores de seguimiento y verificación, haciendo uso de herramientas de las TIC`s, que permitan en forma remota certificar el cumplimiento de cada contrato o convenio de asociación, para lo cual las actas generadas llevarán únicamente la firma del técnico de conteo encargado de hacer la gestión telefónica con las familias y revisar las fuentes documentales.</div></div>
 		<div class='clear'></div>
 		</div>";
 		// }
@@ -1163,11 +1163,12 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 		</div>
 		<div class='fila colb visitavirtual'>
 		<div style='width: 5%;'>#</div>
-		<div style='width: 15%;'>4.1 DOCUMENTO</div><div style='width: 30%'>4.2 NOMBRE COMPLETO</div>
-		<div style='width: 10%'>4.3 GRUPO</div>
+		<div style='width: 10%'><span style='font-size: 8px !important;'>4.1 DOCUMENTO</span></div>
+		<div style='width: 26%'><span style='font-size: 8px !important;'>4.2 NOMBRE COMPLETO</span></div>
+		<div style='width: 16%; font-size: 8px !important;'>4.3 GRUPO</div>
 		<div style='width: 10%'><span style='font-size: 8px !important;'>4.4 ASISTENCIA</span></div>
-		<div style='width: 10%'><span style='font-size: 8px !important;'>4.5 EXCUSA</span></div>
-		<div style='width: 10%'><span style='font-size: 8px !important;'>4.6 FECHA VISITA</span></div>
+		<div style='width: 24%'><span style='font-size: 8px !important;'>4.5 EXCUSA</span></div>
+		<div style=''><span style='font-size: 8px !important;'>4.6 FECHA VISITA</span></div>
 		</div>
 
 		<!--<div class='seccion' id='listado_beneficiarios'>-->
@@ -1270,12 +1271,12 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 					$html .="
 					<div class='fila colb visitavirtual'$mayor5>
 					<div style='width: 5%; min-height: 100%; height: auto;' class='clearfix'>$i</div>
-					<div style='width: 15%; min-height: 100%; height: auto;' class='clearfix'>$row->numDocumento</div>
-					<div style='width: 30%; min-height: 100%; height: auto;' class='clearfix'>$mayor_5$nombre_completo</div>
-					<div style='width: 10%; min-height: 100%; height: auto;' class='clearfix'>$row->grupo&nbsp;</div>
-					<div style='width: 10%; min-height: 100%; height: auto;' class='clearfix'>$row->asistencia&nbsp;</div>
-					<div style='width: 10%; min-height: 100%; height: auto;' class='clearfix'>$excusa&nbsp;</div>
-					<div style='width: 10%; min-height: 100%; height: auto;' class='clearfix'>$row->fechaInterventoria&nbsp;</div>
+					<div style='width: 10%; min-height: 100%; height: auto; font-size: 9px !important;' class='clearfix'>$row->numDocumento</div>
+					<div style='width: 26%; min-height: 100%; height: auto; font-size: 9px !important;' class='clearfix'>$mayor_5$nombre_completo</div>
+					<div style='width: 16%; min-height: 100%; height: auto; font-size: 9px !important; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;' class='clearfix'>$row->grupo&nbsp;</div>
+					<div style='width: 10%; min-height: 100%; height: auto; font-size: 9px !important;' class='clearfix'>$row->asistencia&nbsp;</div>
+					<div style='width: 24%; min-height: 100%; height: auto; font-size: 9px !important;' class='clearfix'>$excusa&nbsp;</div>
+					<div style='min-height: 100%; height: auto; font-size: 9px !important;' class='clearfix'>$row->fechaInterventoria&nbsp;</div>
 					</div>
 
 					<div class='fila colb visitapresencial'$mayor5>

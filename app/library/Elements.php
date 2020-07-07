@@ -998,6 +998,11 @@ class Elements extends Component
 													'VL' => 'VL',
 													'2' => 'PS');
 													break;
+													case "tipoVisitaEF":
+													return array (
+														'SE ENTREGA PAQUETE ALIMENTARIO' => 'SE ENTREGA PAQUETE ALIMENTARIO',
+														'NO SE ENTREGA PAQUETE ALIMENTARIO' => 'NO SE ENTREGA PAQUETE ALIMENTARIO');
+														break;
 													default:
 													return array();
 												}

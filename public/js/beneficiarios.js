@@ -1,34 +1,35 @@
 $(document).ready(function () {
-$('.asistencia').each(function() {
-	var asistencia = $(this).val();
-	var periodo_tipo = $('#periodo_tipo').val();
-	if( periodo_tipo != 2 )
-	{
-		if( asistencia == 7 || asistencia == 8 || asistencia == 9 || asistencia == 13) {
-			$(this).parent().parent().find(".excusa").removeClass("hidden");
-			$(this).parent().parent().find(".excusa").removeAttr("disabled");
-			$(this).parent().parent().find(".excusa").addClass("required");
-		} else {
-			$(this).parent().parent().find(".excusa").addClass("hidden");
-			$(this).parent().parent().find(".excusa").attr("disabled", "disabled");
-			$(this).parent().parent().find(".excusa").removeClass("required");
+	$('.asistencia').each(function() {
+		var asistencia = $(this).val();
+		var periodo_tipo = $('#periodo_tipo').val();
+		if( periodo_tipo != 2 )
+		{
+			if( asistencia == 7 || asistencia == 8 || asistencia == 9 || asistencia == 13) {
+				$(this).parent().parent().find(".excusa").removeClass("hidden");
+				$(this).parent().parent().find(".excusa").removeAttr("disabled");
+				$(this).parent().parent().find(".excusa").addClass("required");
+			} else {
+				$(this).parent().parent().find(".excusa").addClass("hidden");
+				$(this).parent().parent().find(".excusa").attr("disabled", "disabled");
+				$(this).parent().parent().find(".excusa").removeClass("required");
+			}
 		}
-	}
-	else
-	{
-		if( asistencia == 4 || asistencia == 5 || asistencia == 6 || asistencia == 7) {
-			$(this).parent().parent().find(".excusa").removeClass("hidden");
-			$(this).parent().parent().find(".excusa").removeAttr("disabled");
-			$(this).parent().parent().find(".excusa").addClass("required");
-		} else {
-			$(this).parent().parent().find(".excusa").addClass("hidden");
-			$(this).parent().parent().find(".excusa").attr("disabled", "disabled");
-			$(this).parent().parent().find(".excusa").removeClass("required");
+		else
+		{
+			if( asistencia == 4 || asistencia == 5 || asistencia == 6 || asistencia == 7) {
+				$(this).parent().parent().find(".excusa").removeClass("hidden");
+				$(this).parent().parent().find(".excusa").removeAttr("disabled");
+				$(this).parent().parent().find(".excusa").addClass("required");
+				// $(this).parent().parent().find(".paquete_alimentario").attr("disabled", "disabled");
+			} else {
+				$(this).parent().parent().find(".excusa").addClass("hidden");
+				$(this).parent().parent().find(".excusa").attr("disabled", "disabled");
+				$(this).parent().parent().find(".excusa").removeClass("required");
+			}
 		}
-	}
-});
-$( '#beneficiarios_form' ).parsley( 'destroy' );
-$( '#beneficiarios_form' ).parsley();
+	});
+	$( '#beneficiarios_form' ).parsley( 'destroy' );
+	$( '#beneficiarios_form' ).parsley();
 });
 if($(".fecha_visita_header").html() == null){
 	$( ".fecha" ).parent().remove();
@@ -63,10 +64,16 @@ $('.asistencia').change(function() {
 			}
 			else
 			{
-				$(this).parent().parent().find("input[name='motivo[]']").attr('placeholder','Gestión Telefónica');
+				// $(this).parent().parent().find("input[name='motivo[]']").attr('placeholder','Gestión Telefónica');
+				if (asistencia == 5) {
+					$(this).parent().parent().find(".paquete_alimentario").val("SE ENTREGA PAQUETE ALIMENTARIO").change();
+				}else {
+					$(this).parent().parent().find(".paquete_alimentario").val("NO SE ENTREGA PAQUETE ALIMENTARIO").change();
+				}
 				$(this).parent().parent().find("input[name='profesional[]']").attr('placeholder','Acudiente');
 				$(this).parent().parent().find(".excusa").removeClass("hidden").addClass("required");
 				$(this).parent().parent().find(".excusa").removeAttr("disabled");
+				// $(this).parent().parent().find(".paquete_alimentario").attr("disabled", "disabled");
 			}
 		} else {
 			$(this).parent().parent().find(".excusa").attr("disabled", "disabled");
@@ -74,6 +81,7 @@ $('.asistencia').change(function() {
 		}
 	}
 });
+
 $("#boton_duplicar").click(function() {
 	var fecha = $(".fecha_duplicar").val();
 	$('.modal-body input:checkbox:checked').each(function(){
