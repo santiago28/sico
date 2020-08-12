@@ -19,6 +19,9 @@ class IbcArchivoDigitalController extends ControllerBase
     public function indexAction($anio)
     {
         $this->persistent->parameters = null;
+				if ($anio == "SIGE") {
+					$anio = 20201;
+				}
         $menu = BcOferenteMenu::find("id_usuario = $this->id_usuario AND anio = $anio")->toArray();
         if($menu){
         	if (substr($this->conversiones->get_client_ip(), 0, 7) == "192.168"){

@@ -451,6 +451,11 @@ class Elements extends Component
 					echo '<i class="material-icons"></i>';
 					echo '<span>'.$this->tag->linkTo("ibc_archivo_digital/index/2020", "2020").'</span>';
 					echo '</div>';
+
+					echo '<div class="item-menu">';
+					echo '<i class="material-icons"></i>';
+					echo '<span>'.$this->tag->linkTo("ibc_archivo_digital/index/SIGE", "SIGE").'</span>';
+					echo '</div>';
 				}else{
 					echo '<div class="item-menu">';
 					echo '<i class="material-icons"></i>';
