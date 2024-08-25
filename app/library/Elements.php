@@ -348,7 +348,7 @@ class Elements extends Component
 		// 	echo '</ul>';
 		// 	echo '</div>';
 		// } else {
-		// 	echo '<form action="/sico/session/start" class="navbar-form navbar-right" role="form" method="post">
+		// 	echo '<form action="/2024/sico/session/start" class="navbar-form navbar-right" role="form" method="post">
 		// 	<div class="form-group">
 		// 	<input type="text" name="usuario" placeholder="Usuario o Email" class="form-control">
 		// 	</div>
@@ -381,22 +381,7 @@ class Elements extends Component
 					$menu ['bc_reporte'] = array ('caption' => 'Reportes', 'action' => '');
 					// $menu ['ibc_usuario'] = array ('caption' => 'Usuarios', 'action' => 'index');
 				}
-				$menu_usuario .= '<div class="item-menu-titulo"><span>Info</span></div>';
-
-				$menu_usuario .= '<div class="item-menu">';
-				$menu_usuario .= '<i class="material-icons"></i>';
-				$menu_usuario .= '<span><a target="_blank" href="http://asesoriayconsultoria.pascualbravo.edu.co/index.php/cobro-de-honorarios">Reporte de pago</a></span>';
-				$menu_usuario .= '</div>';
-
-				$menu_usuario .= '<div class="item-menu">';
-				$menu_usuario .= '<i class="material-icons"></i>';
-				$menu_usuario .= '<span><a target="_blank" href="https://accounts.google.com/">Correo Institucional</a></span>';
-				$menu_usuario .= '</div>';
-
-				$menu_usuario .= '<div class="item-menu">';
-				$menu_usuario .= '<i class="material-icons"></i>';
-				$menu_usuario .= '<span><a target="_blank" href="http://192.168.2.8:10001/owncloud">Owncloud</a></span>';
-				$menu_usuario .= '</div>';
+			
 			}
 
 			echo '<div class="header-menu-principal">';
@@ -531,7 +516,7 @@ class Elements extends Component
 			if($actionName == $menu['action']){
 				echo "<li role='presentation' class='active'><a>$caption</a></li>";
 			} else {
-				echo "<li role='presentation'><a href='/sico/ibc_mensaje/$action/'>$caption</a></li>";
+				echo "<li role='presentation'><a href='/2024/sico/ibc_mensaje/$action/'>$caption</a></li>";
 			}
 		}
 		echo "</ul>";
@@ -565,7 +550,7 @@ class Elements extends Component
 		echo "<td>".$acta->id_usuario."</td>";
 		echo "</tr></tbody></table>";
 		echo "</div>";
-		echo "<a href='/sico/cob_periodo/recorrido/$acta->id_periodo/$acta->recorrido' class='btn btn-primary regresar'><i class='glyphicon glyphicon-chevron-left'></i> Regresar</a>";
+		echo "<a href='/2024/sico/cob_periodo/recorrido/$acta->id_periodo/$acta->recorrido' class='btn btn-primary regresar'><i class='glyphicon glyphicon-chevron-left'></i> Regresar</a>";
 		//Si no es el recorrido 1 quita el menú de adicionales
 		if ($acta->id_modalidad != 5) {
 			if($acta->recorrido > 1 && $acta->id_modalidad != 12){
@@ -593,16 +578,16 @@ class Elements extends Component
 			if($actionName == $menu['action']){
 				echo "<a class='btn btn-primary menu-tab disabled'><i class='glyphicon $icon'></i> $caption</a>";
 			} else {
-				echo "<a href='/sico/cob_actaconteo/$action/$acta->id_actaconteo' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
+				echo "<a href='/2024/sico/cob_actaconteo/$action/$acta->id_actaconteo' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
 			}
 		}
 		$uri = str_replace($this->url->getBaseUri(), '', str_replace($_SERVER["SCRIPT_NAME"], '', $_SERVER["REQUEST_URI"]));
 		//SI el acta pertenece al interventor o auxiliar y no está cerrada
 		if($acta->id_usuario != 0 && (($acta->id_usuario == $user['id_usuario'] && $acta->estado < 2) || ($acta->IbcUsuario->id_usuario_lider == $user['id_usuario'] && $acta->estado < 3))){
-			echo "<form class='menu-tab' action='/sico/cob_actaconteo/cerrar/$acta->id_actaconteo' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-danger' value='Cerrar Acta'></form>";
+			echo "<form class='menu-tab' action='/2024/sico/cob_actaconteo/cerrar/$acta->id_actaconteo' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-danger' value='Cerrar Acta'></form>";
 		}
 		if($acta->estado == 2 && $acta->IbcUsuario->id_usuario_lider == $user['id_usuario']){
-			echo "<form class='menu-tab' action='/sico/cob_actaconteo/abrir/$acta->id_actaconteo' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-info' value='Abrir Acta'></form>";
+			echo "<form class='menu-tab' action='/2024/sico/cob_actaconteo/abrir/$acta->id_actaconteo' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-info' value='Abrir Acta'></form>";
 		}
 		echo "</div><div class='clear'></clear>";
 	}
@@ -635,7 +620,7 @@ class Elements extends Component
 		echo "<td>".$acta->id_usuario."</td>";
 		echo "</tr></tbody></table>";
 		echo "</div>";
-		echo "<a href='/sico/cob_periodo/recorrido/$acta->id_periodo/$acta->recorrido' class='btn btn-primary regresar'><i class='glyphicon glyphicon-chevron-left'></i> Regresar</a>";
+		echo "<a href='/2024/sico/cob_periodo/recorrido/$acta->id_periodo/$acta->recorrido' class='btn btn-primary regresar'><i class='glyphicon glyphicon-chevron-left'></i> Regresar</a>";
 		foreach ($this->_actametroMenu as $menu) {
 			$action = $menu['action'];
 			$caption = $menu['caption'];
@@ -643,16 +628,16 @@ class Elements extends Component
 			if($actionName == $menu['action']){
 				echo "<a class='btn btn-primary menu-tab disabled'><i class='glyphicon $icon'></i> $caption</a>";
 			} else {
-				echo "<a href='/sico/cob_actamuestreo/$action/$acta->id_actamuestreo' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
+				echo "<a href='/2024/sico/cob_actamuestreo/$action/$acta->id_actamuestreo' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
 			}
 		}
 		$uri = str_replace($this->url->getBaseUri(), '', str_replace($_SERVER["SCRIPT_NAME"], '', $_SERVER["REQUEST_URI"]));
 		//SI el acta pertenece al interventor o auxiliar y no está cerrada
 		if($acta->id_usuario != 0 && (($acta->id_usuario == $user['id_usuario'] && $acta->estado < 2) || ($acta->IbcUsuario->id_usuario_lider == $user['id_usuario'] && $acta->estado < 3))){
-			echo "<form class='menu-tab' action='/sico/cob_actamuestreo/cerrar/$acta->id_actamuestreo' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-danger' value='Cerrar Acta'></form>";
+			echo "<form class='menu-tab' action='/2024/sico/cob_actamuestreo/cerrar/$acta->id_actamuestreo' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-danger' value='Cerrar Acta'></form>";
 		}
 		if($acta->estado == 2 && $acta->IbcUsuario->id_usuario_lider == $user['id_usuario']){
-			echo "<form class='menu-tab' action='/sico/cob_actamuestreo/abrir/$acta->id_actamuestreo' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-info' value='Abrir Acta'></form>";
+			echo "<form class='menu-tab' action='/2024/sico/cob_actamuestreo/abrir/$acta->id_actamuestreo' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-info' value='Abrir Acta'></form>";
 		}
 		echo "</div><div class='clear'></clear>";
 	}
@@ -686,7 +671,7 @@ class Elements extends Component
 		echo "<td>".$acta->id_usuario."</td>";
 		echo "</tr></tbody></table>";
 		echo "</div>";
-		echo "<a href='/sico/cob_verificacion/ver/$acta->id_verificacion' class='btn btn-primary regresar'><i class='glyphicon glyphicon-chevron-left'></i> Regresar</a>";
+		echo "<a href='/2024/sico/cob_verificacion/ver/$acta->id_verificacion' class='btn btn-primary regresar'><i class='glyphicon glyphicon-chevron-left'></i> Regresar</a>";
 		foreach ($this->_actametroMenu as $menu) {
 			$action = $menu['action'];
 			$caption = $menu['caption'];
@@ -694,16 +679,16 @@ class Elements extends Component
 			if($actionName == $menu['action']){
 				echo "<a class='btn btn-primary menu-tab disabled'><i class='glyphicon $icon'></i> $caption</a>";
 			} else {
-				echo "<a href='/sico/$controllerName/$action/$acta->id_acta' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
+				echo "<a href='/2024/sico/$controllerName/$action/$acta->id_acta' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
 			}
 		}
 		$uri = str_replace($this->url->getBaseUri(), '', str_replace($_SERVER["SCRIPT_NAME"], '', $_SERVER["REQUEST_URI"]));
 		//SI el acta pertenece al interventor o auxiliar y no está cerrada
 		if($acta->id_usuario != 0 && (($acta->id_usuario == $user['id_usuario'] && $acta->estado < 2) || ($acta->IbcUsuario->id_usuario_lider == $user['id_usuario'] && $acta->estado < 3))){
-			echo "<form class='menu-tab' action='/sico/$controllerName/cerrar/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-danger' value='Cerrar Acta'></form>";
+			echo "<form class='menu-tab' action='/2024/sico/$controllerName/cerrar/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-danger' value='Cerrar Acta'></form>";
 		}
 		if($acta->estado == 2 && $acta->IbcUsuario->id_usuario_lider == $user['id_usuario']){
-			echo "<form class='menu-tab' action='/sico/$controllerName/abrir/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-info' value='Abrir Acta'></form>";
+			echo "<form class='menu-tab' action='/2024/sico/$controllerName/abrir/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-info' value='Abrir Acta'></form>";
 		}
 		echo "</div><div class='clear'></clear>";
 	}
@@ -737,7 +722,7 @@ class Elements extends Component
 		echo "<td>".$acta->id_usuario."</td>";
 		echo "</tr></tbody></table>";
 		echo "</div>";
-		echo "<a href='/sico/cob_verificacion/ver/$acta->id_verificacion' class='btn btn-primary regresar'><i class='glyphicon glyphicon-chevron-left'></i> Regresar</a>";
+		echo "<a href='/2024/sico/cob_verificacion/ver/$acta->id_verificacion' class='btn btn-primary regresar'><i class='glyphicon glyphicon-chevron-left'></i> Regresar</a>";
 		foreach ($this->_actacomputoMenu as $menu) {
 			$action = $menu['action'];
 			$caption = $menu['caption'];
@@ -745,16 +730,16 @@ class Elements extends Component
 			if($actionName == $menu['action']){
 				echo "<a class='btn btn-primary menu-tab disabled'><i class='glyphicon $icon'></i> $caption</a>";
 			} else {
-				echo "<a href='/sico/$controllerName/$action/$acta->id_acta' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
+				echo "<a href='/2024/sico/$controllerName/$action/$acta->id_acta' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
 			}
 		}
 		$uri = str_replace($this->url->getBaseUri(), '', str_replace($_SERVER["SCRIPT_NAME"], '', $_SERVER["REQUEST_URI"]));
 		//SI el acta pertenece al interventor o auxiliar y no está cerrada
 		if($acta->id_usuario != 0 && (($acta->id_usuario == $user['id_usuario'] && $acta->estado < 2) || ($acta->IbcUsuario->id_usuario_lider == $user['id_usuario'] && $acta->estado < 3))){
-			echo "<form class='menu-tab' action='/sico/$controllerName/cerrar/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-danger' value='Cerrar Acta'></form>";
+			echo "<form class='menu-tab' action='/2024/sico/$controllerName/cerrar/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-danger' value='Cerrar Acta'></form>";
 		}
 		if($acta->estado == 2 && $acta->IbcUsuario->id_usuario_lider == $user['id_usuario']){
-			echo "<form class='menu-tab' action='/sico/$controllerName/abrir/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-info' value='Abrir Acta'></form>";
+			echo "<form class='menu-tab' action='/2024/sico/$controllerName/abrir/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-info' value='Abrir Acta'></form>";
 		}
 		echo "</div><div class='clear'></clear>";
 	}
@@ -788,7 +773,7 @@ class Elements extends Component
 		echo "<td>".$acta->id_usuario."</td>";
 		echo "</tr></tbody></table>";
 		echo "</div>";
-		echo "<a href='/sico/cob_verificacion/ver/$acta->id_verificacion' class='btn btn-primary regresar'><i class='glyphicon glyphicon-chevron-left'></i> Regresar</a>";
+		echo "<a href='/2024/sico/cob_verificacion/ver/$acta->id_verificacion' class='btn btn-primary regresar'><i class='glyphicon glyphicon-chevron-left'></i> Regresar</a>";
 		foreach ($this->_actathMenu as $menu) {
 			$action = $menu['action'];
 			$caption = $menu['caption'];
@@ -796,16 +781,16 @@ class Elements extends Component
 			if($actionName == $menu['action']){
 				echo "<a class='btn btn-primary menu-tab disabled'><i class='glyphicon $icon'></i> $caption</a>";
 			} else {
-				echo "<a href='/sico/$controllerName/$action/$acta->id_acta' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
+				echo "<a href='/2024/sico/$controllerName/$action/$acta->id_acta' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
 			}
 		}
 		$uri = str_replace($this->url->getBaseUri(), '', str_replace($_SERVER["SCRIPT_NAME"], '', $_SERVER["REQUEST_URI"]));
 		//SI el acta pertenece al interventor o auxiliar y no está cerrada
 		if($acta->id_usuario != 0 && (($acta->id_usuario == $user['id_usuario'] && $acta->estado < 2) || ($acta->IbcUsuario->id_usuario_lider == $user['id_usuario'] && $acta->estado < 3))){
-			echo "<form class='menu-tab' action='/sico/$controllerName/cerrar/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-danger' value='Cerrar Acta'></form>";
+			echo "<form class='menu-tab' action='/2024/sico/$controllerName/cerrar/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-danger' value='Cerrar Acta'></form>";
 		}
 		if($acta->estado == 2 && $acta->IbcUsuario->id_usuario_lider == $user['id_usuario']){
-			echo "<form class='menu-tab' action='/sico/$controllerName/abrir/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-info' value='Abrir Acta'></form>";
+			echo "<form class='menu-tab' action='/2024/sico/$controllerName/abrir/$acta->id_acta' method='post'><input type='hidden' name='uri' value='$uri'><input type='submit' class='btn btn-info' value='Abrir Acta'></form>";
 		}
 		echo "</div><div class='clear'></clear>";
 	}
@@ -827,7 +812,7 @@ class Elements extends Component
 			if($actionName == $menu['action']){
 				echo "<a class='btn btn-primary menu-tab disabled'><i class='glyphicon $icon'></i> $caption</a>";
 			} else {
-				echo "<a href='/sico/$controllerName/$action' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
+				echo "<a href='/2024/sico/$controllerName/$action' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
 			}
 		}
 		echo "<div class='clear'></clear>";
@@ -853,7 +838,7 @@ class Elements extends Component
 			if($actionName == $menu['action']){
 				echo "<a class='btn btn-primary menu-tab disabled'><i class='glyphicon $icon'></i> $caption</a>";
 			} else {
-				echo "<a href='/sico/$controllerName/$action' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
+				echo "<a href='/2024/sico/$controllerName/$action' class='btn btn-primary menu-tab'><i class='glyphicon $icon'></i> $caption</a>";
 			}
 		}
 		echo "<div class='clear'></clear>";

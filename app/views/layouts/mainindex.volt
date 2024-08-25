@@ -79,7 +79,7 @@
 </div>
 <hr>
 <footer>
-  <p>Interventoría Buen Comienzo</p>
+  <p>Supervisión Buen Comienzo</p>
 </footer>
 </div>
 <script>

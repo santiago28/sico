@@ -697,15 +697,15 @@ class CobActaconteo extends \Phalcon\Mvc\Model
 			$encabezado = "<div class='seccion encabezado'>
 			<img src='/sico/public/img/logo_pascual_largo.png' style='width: 18%; margin-top: 2%; margin-left: 2%;' />
 			<div class='fila center'>
-			<div style='margin-left:20%; margin-top: -3%;' class='encabezadovisitavirtual'>$titulo_encabezado_familiar_virtual<br>INTERVENTORÍA BUEN COMIENZO - <em>(RECORRIDO $acta->recorrido)</em></div>
-			<div style='margin-left:20%; margin-top: -3%;' class='visitapresencial1'>$titulo_encabezado_familiar_presencial<br>INTERVENTORÍA BUEN COMIENZO - <em>(RECORRIDO $acta->recorrido)</em></div>
+			<div style='margin-left:20%; margin-top: -3%;' class='encabezadovisitavirtual'>$titulo_encabezado_familiar_virtual<br><em>(RECORRIDO $acta->recorrido)</em></div>
+			<div style='margin-left:20%; margin-top: -3%;' class='visitapresencial1'>$titulo_encabezado_familiar_presencial<br><em>(RECORRIDO $acta->recorrido)</em></div>
 
 			</div>
 			";
 		}else{
 			$encabezado = "<div class='seccion encabezado'>
 			<img src='/sico/public/img/logo_pascual_largo.png' style='width: 18%; margin-top: 2%; margin-left: 2%;' />
-			<div class='fila center'><div style='margin-left:20%; margin-top: -3%;'>$titulo_encabezado<br>INTERVENTORÍA BUEN COMIENZO - <em>(RECORRIDO $acta->recorrido)</em></div></div>
+			<div class='fila center'><div style='margin-left:20%; margin-top: -3%;'>$titulo_encabezado<br><em>(RECORRIDO $acta->recorrido)</em></div></div>
 			";
 		}
 
